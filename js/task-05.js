@@ -1,57 +1,22 @@
-// Пользователь может оформить доставку товара к себе в страну, указав ее при посещении страницы в prompt. Учти, пользователь может ввести имя страны 
-// не только буквами нижнего регистра, а к примеру 'кИтАЙ'.
+// Напиши функцию checkForSpam(message), принимающую 1 параметр message - строку. Функция проверяет ее на содержание слов spam и sale. 
+// Если нашли зарещенное слово то функция возвращает true, если запрещенных слов нет функция возвращает false. 
+// Слова в строке могут быть в произвольном регистре.
 
-// Напиши скрипт который выводит сообщение о стоимости доставки в указанную страну. Обязательно используй switch. 
-// Формат сообщения: 'Доставка в [страна] будет стоить [цена] кредитов'.
-
-// Но доставка есть не везде, если указанной страны нет в списке, то выводи в alert сообщение 'В вашей стране доставка не доступна'.
-
-// Ниже приведен список стран и стоимость доставки.
-
-// Китай - 100 кредитов
-// Чили - 250 кредитов
-// Австралия - 170 кредитов
-// Индия - 80 кредитов
-// Ямайка - 120 кредитов
-
-let message;
-let cost;
-
-const country = prompt ('Выберите страну доставки?');
-const countryLetter = country.toLowerCase()
-
-switch (countryLetter){
-
-    case 'китай':
-        cost = 100;
-        message = `Доставка в ${countryLetter} будет стоить ${cost} кредитов`;
-    break;
-
-
-    case 'чили':
-        cost = 250;
-        message = `Доставка в ${countryLetter} будет стоить ${cost} кредитов`;
-    break;
-
-    case 'индия':
-        cost = 80;
-        message = `Доставка в ${countryLetter} будет стоить ${cost} кредитов`;
-    break;
-
-    case 'австралия':
-        cost = 170;
-        message = `Доставка в ${countryLetter} будет стоить ${cost} кредитов`;
-    break;
-
-
-    case 'ямайка':
-        cost = 120;
-        message = `Доставка в ${countryLetter} будет стоить ${cost} кредитов`;
-    break;
-
-    default:
-        alert (`В вашей стране доставка недоступна`);
-
-
+const checkForSpam = function(message) {
+  const wordsToCheck = message.toLowerCase();
+  const isSpam = wordsToCheck.includes('sale') || wordsToCheck.includes('spam');
+  return isSpam;
 }
-console.log(message);
+
+
+
+/*
+ * Вызовы функции для проверки работоспособности твоей реализации.
+ */
+console.log(checkForSpam('Latest technology news')); // false
+
+console.log(checkForSpam('JavaScript weekly newsletter')); // false
+
+console.log(checkForSpam('Get best sale offers now!')); // true
+
+console.log(checkForSpam('[SPAM] How to earn fast money?')); // true

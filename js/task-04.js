@@ -1,21 +1,39 @@
+// Напиши функцию formatString(string) которая принимает строку и форматирует ее если необходимо.
+
+// Если длина строки не превышает 40 символов, функция возвращает ее в исходном виде.
+// Если длина больше 40 символов, то функция обрезает строку до 40-ка символов и добавляет в конец строки троеточие '...', 
+// после чего возвращает укороченную версию.
 
 
-const credits = 23580;
-const pricePerDroid = 3000;
 
+const formatString = function(string) {
+  
+  console.log(string.length);
+  
+  
+  if(string.length <= 40){
+    return string;
+  }else {
+    string.length > 40;
+    return string.slice(0, 40) + '...';
+  }
+};
 
-const userInput = prompt("Сколько дроидов вы хотите купить?");
+/*
+ * Вызовы функции для проверки работоспособности твоей реализации.
+ */
+console.log(formatString('Curabitur ligula sapien, tincidunt non.'));
+// вернется оригинальная строка
 
-const totalPrice = userInput*pricePerDroid;
-const creditAmount = credits-totalPrice;
+console.log(formatString('Vestibulum facilisis, purus nec pulvinar iaculis.'));
+// вернется форматированная строка
 
-if(userInput === null){
-    console.log('Отменено пользователем!');
-    
-}else if(totalPrice <= credits && Number(userInput) >= 1){
-console.log(`Вы купили ${Number(userInput)} дроидов, на счету осталось ${creditAmount} кредитов.`);
-}else if(totalPrice > credits && Number(userInput) >= 1){
-    console.log(`Недостаточно средств на счете!`);
-}else if(Number(userInput) < 1){
-    console.log(`Введено некоректное число для оформления заказа!`);
-}
+console.log(formatString('Curabitur ligula sapien.'));
+// вернется оригинальная строка
+
+console.log(
+  formatString(
+    'Nunc sed turpis. Curabitur a felis in nunc fringilla tristique.',
+  ),
+);
+// вернется форматированная строка
